@@ -1,0 +1,130 @@
+// Container for the authentication form
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+// Authentication form styling
+.auth-form {
+  background-color: #f5efef;
+  padding: 4rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 28rem;
+}
+
+// Title styling
+.auth-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+// Input group styling
+.auth-input-group {
+  margin-bottom: 1.25rem;
+}
+
+// Label styling
+.auth-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+// Input container styling
+.auth-input-container {
+  margin-top: 0.35rem;
+  position: relative;
+  border-radius: 0.375rem;
+}
+
+// Icon styling
+.auth-icon {
+  position: absolute;
+  padding-top: 0.5rem;
+  padding-left: 0.75rem;
+  display: flex;
+  pointer-events: none;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+// Logo styling
+.auth-logo {
+  padding-left: 0.75rem;
+  height: 4rem;
+}
+
+// Input field styling
+.auth-input {
+  display: block;
+  width: 90%;
+  padding-left: 2.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+
+  &:focus {
+    outline: 2px solid #6366f1;
+    border-color: #6366f1;
+  }
+}
+
+// Button styling
+.auth-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  color: #ffffff;
+  background-color: #4f46e5;
+
+  &:hover {
+    background-color: #4338ca;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #6366f1;
+    ring-offset: 2px;
+  }
+}
+
+// Button icon styling
+.auth-button-icon {
+  position: absolute;
+  left: 0;
+  inset-y: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+}
+
+// Toggle section styling
+.auth-toggle {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+// Toggle button styling
+.auth-toggle-button {
+  font-size: 0.875rem;
+  color: #4f46e5;
+
+  &:hover {
+    color: #4338ca;
+  }
+}
