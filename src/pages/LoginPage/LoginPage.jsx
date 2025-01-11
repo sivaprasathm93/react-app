@@ -1,9 +1,6 @@
 import Login from "../../components/Login";
-function CartPage() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+
+function LoginPage() {
+  return <Login />;
 }
-export default CartPage;
+export default LoginPage;

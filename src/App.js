@@ -4,7 +4,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Login from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CartContext from "./context/CartContext";
 
 export default function App() {
@@ -34,12 +34,12 @@ export default function App() {
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       <div className="App">
-        <Switch>
-          <Route exact={true} path="/login" component={Login} />
-          <Route exact={true} path="/" component={ProductsPage} />
-          <Route exact={true} path="/cart" component={CartPage} />
+        <Routes>
+          <Route exact={true} path="/login" element={<Login />} />
+          <Route exact={true} path="/" element={<ProductsPage/>} />
+          <Route exact={true} path="/cart" element={<CartPage/>} />
           <Route component={NotFoundPage} />
-        </Switch>
+        </Routes>
       </div>
     </CartContext.Provider>
   );

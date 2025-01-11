@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState, memo } from "react";
 import { User, Mail, Lock } from "lucide-react";
 import AmazonLogo from "../../assets/logo.png";
 import "./Login.scss";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage() {
+function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -12,6 +12,10 @@ export default function LoginPage() {
     confirmPassword: "",
     name: "",
   });
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,15 +25,45 @@ export default function LoginPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSignUp && formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    // Here you would handle the form submission, e.g., send data to a backend
-    console.log("Form submitted:", formData);
-    alert(isSignUp ? "Sign Up Successful!" : "Login Successful!");
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/${isSignUp ? "signup" : "login"}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      setPopupMessage(isSignUp ? "Sign Up Successful!" : "Login Successful!");
+      setPopupVisible(true);
+      setTimeout(() => {
+        setPopupVisible(false);
+        if (!isSignUp) {
+          navigate("/");
+        }
+      }, 5_000);
+
+      if (!isSignUp) {
+        navigate("/");
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const toggleForm = () => {
@@ -144,6 +178,13 @@ export default function LoginPage() {
           </button>
         </div>
       </div>
+      {popupVisible && (
+        <div className="popup">
+          <p>{popupMessage}</p>
+        </div>
+      )}
     </div>
   );
 }
+
+export default memo(LoginPage);
