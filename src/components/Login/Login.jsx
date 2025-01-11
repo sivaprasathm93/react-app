@@ -54,12 +54,12 @@ function LoginPage() {
       setTimeout(() => {
         setPopupVisible(false);
         if (!isSignUp) {
-          navigate("/");
+          navigate("/home");
         }
       }, 5_000);
 
       if (!isSignUp) {
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       alert(error.message);

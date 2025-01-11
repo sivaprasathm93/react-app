@@ -35,9 +35,9 @@ export default function App() {
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       <div className="App">
         <Routes>
-          <Route exact={true} path="/login" element={<Login />} />
-          <Route exact={true} path="/" element={<ProductsPage/>} />
-          <Route exact={true} path="/cart" element={<CartPage/>} />
+          <Route path="/" element={<Login />} />
+          <Route exact={true} path="/home" element={<ProductsPage />} />
+          <Route exact={true} path="/cart" element={<CartPage />} />
           <Route component={NotFoundPage} />
         </Routes>
       </div>
