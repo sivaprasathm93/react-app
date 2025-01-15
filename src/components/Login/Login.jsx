@@ -28,7 +28,11 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSignUp && formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      setPopupMessage("Passwords do not match");
+      setPopupVisible(true);
+      setTimeout(() => {
+        setPopupVisible(false);
+      }, 3_000);
       return;
     }
 
@@ -56,13 +60,17 @@ function LoginPage() {
         if (!isSignUp) {
           navigate("/home");
         }
-      }, 5_000);
+      }, 3_000);
 
       if (!isSignUp) {
         navigate("/home");
       }
     } catch (error) {
-      alert(error.message);
+      setPopupMessage(error.message);
+      setPopupVisible(true);
+      setTimeout(() => {
+        setPopupVisible(false);
+      }, 3_000);
     }
   };
 
@@ -79,7 +87,7 @@ function LoginPage() {
   return (
     <div className="auth-container">
       <div className="auth-form">
-        <Link to="/">
+        <Link to="/home">
           <img src={AmazonLogo} alt="Amazon Logo" className="auth-logo" />
         </Link>
         <h2 className="auth-title">{isSignUp ? "Sign Up" : "Login"}</h2>
